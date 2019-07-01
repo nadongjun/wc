@@ -1,4 +1,6 @@
 import React from 'react';
+import {Link as RouterLink} from 'react-router-dom';
+import Link from '@material-ui/core/Link';
 import { withStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Drawer from '@material-ui/core/Drawer'
@@ -14,7 +16,7 @@ const styles = {
         marginRight: 'auto'
     }
 }
-//네비게이션바
+//네비게이션바 + 클릭한 페이지
 class AppShell extends React.Component {
     constructor(props) {
         super(props);
@@ -26,17 +28,36 @@ class AppShell extends React.Component {
     render() {//그리는 함수
         const { classes } = this.props;
         return (
-            <div className={classes.root}>
-                <AppBar position="static">   
-                    <IconButton className={classes.menuButton} color="inherit" onClick={this.handleDrawerToggle}>
-                        <MenuIcon/>
-                    </IconButton>
-                </AppBar>
-                <Drawer open={this.state.toggle}>
-                    <MenuItem onClick={this.handleDrawerToggle}>Home</MenuItem>
-                </Drawer>
+            <div>
+                <div className={classes.root}>
+                    <AppBar position="static">   
+                        <IconButton className={classes.menuButton} color="inherit" onClick={this.handleDrawerToggle}>
+                            <MenuIcon/>
+                        </IconButton>
+                    </AppBar>
+                    <Drawer open={this.state.toggle}>
+                        <MenuItem onClick={this.handleDrawerToggle}>
+                            <Link component={RouterLink} to="/">
+                                Home
+                            </Link>
+                    </MenuItem>
+                    <MenuItem onClick={this.handleDrawerToggle}>
+                            <Link component={RouterLink} to="/words">
+                                Words
+                            </Link>
+                    </MenuItem>
+                    <MenuItem onClick={this.handleDrawerToggle}>
+                            <Link component={RouterLink} to="/texts">
+                                Texts
+                            </Link>
+                    </MenuItem>
+                    </Drawer>
+                </div>
+                <div id="content" style={{margin:'auto', marginTop: '20[x'}}>
+                    {React.cloneElement(this.props.children)}
+                </div>
             </div>
-        )
+        );
     }
 }
 
