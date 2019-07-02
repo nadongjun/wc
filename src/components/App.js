@@ -4,6 +4,7 @@ import { HashRouter as Router, Route } from 'react-router-dom';
 import Home from './Home';
 import Texts from './Texts';
 import Words from './Words';
+import Detail from './Detail';
 //사용자에게 보여주는 화면
 class App extends React.Component {
     render() {//Router 안에 포함된 Appshell
@@ -15,7 +16,7 @@ class App extends React.Component {
                         <Route exact path="/" component={Home}/>
                         <Route exact path="/texts" component={Texts}/>
                         <Route exact path="/words" component={Words}/>
-
+                        <Route exact path="/detail/:textID" component={Detail}/>
                     </div>
                 </AppShell>
             </Router>

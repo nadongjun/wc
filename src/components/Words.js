@@ -136,7 +136,7 @@ class Words extends React.Component {
                     <DialogTitle>단어 추가</DialogTitle>
                     <DialogContent>
                         <TextField label="단어" type="text" name="word" value={this.state.word} onChange={this.handleValueChange} /><br />
-                        <TextField label="가중치" type="text" name="weight" value={this.state.word} onChange={this.handleValueChange} /><br />
+                        <TextField label="가중치" type="text" name="weight" value={this.state.weight} onChange={this.handleValueChange} /><br />
                     </DialogContent>
                     <DialogActions>
                        <Button variant="contained" color="primary" onClick={this.handleSubmit}>추가</Button>            
